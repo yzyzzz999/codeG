@@ -95,7 +95,7 @@ class MethodExtractor:
         for child in param.children:
             if child.type == 'identifier':
                 param_name = self._safe_decode(child.text)
-            elif child.type in ['type_identifier', 'void_type', 'array_type', 'generic_type']:
+            elif child.type == 'type_identifier' or child.type.endswith('_type'):
                 param_type = self._extract_type_string(child)
         return {
             'name': param_name,
@@ -115,7 +115,7 @@ class MethodExtractor:
             for child in node.children:
                 if child.type in ['type_identifier', 'generic_type']:
                     element_type = self._extract_type_string(child)
-                elif child.type == 'dimensions':
+                elif child.type == 'dimensions' or child.type.endswith('_type'):
                     dimensions += self._safe_decode(child.text)
             return f"{element_type}{dimensions}" if element_type else dimensions
         elif node.type == 'generic_type':
@@ -144,7 +144,7 @@ class MethodExtractor:
                 # 查找方法名之前的类型
                 for j in range(i):
                     prev_child = node.children[j]
-                    if prev_child.type in ['type_identifier', 'void_type', 'array_type', 'generic_type']:
+                    if prev_child.type == 'type_identifier' or prev_child.type.endswith('_type'):
                         return self._extract_type_string(prev_child)
         return None
 
