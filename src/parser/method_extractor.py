@@ -21,6 +21,31 @@ class MethodInfo:
     docstring: Optional[str]
     annotation: Optional[str]
 
+    def to_entity(self) -> Dict:
+        return {
+            'name': self.name,
+            'parameters': self.parameters,
+            'return_type': self.return_type,
+            'code': self.code,
+            'start_line': self.start_line,
+            'end_line': self.end_line,
+            'docstring': self.docstring,
+            'annotation': self.annotation
+        }
+
+    @classmethod
+    def from_entity(cls, result: Dict):
+        return MethodInfo(
+            name=result['name'],
+            parameters=result['parameters'],
+            return_type=result['return_type'],
+            code=result['code'],
+            start_line=result['start_line'],
+            end_line=result['end_line'],
+            docstring=result['docstring'],
+            annotation=result['annotation']
+        )
+
 
 class MethodExtractor:
     """方法提取器"""
@@ -138,7 +163,7 @@ class MethodExtractor:
         return self._safe_decode(node.text)
 
     def _extract_return_type(self, node: Node) -> Optional[str]:
-        """提取返回类型 - 修复：支持泛型和数组返回类型"""
+        """提取返回类型 """
         for i, child in enumerate(node.children):
             if child.type == 'identifier':  # 找到方法名
                 # 查找方法名之前的类型
@@ -157,7 +182,7 @@ class MethodExtractor:
         return str(text)
 
     def _extract_docstring(self, node: Node) -> Optional[str]:
-        """提取文档注释 - 修复：在方法声明前查找 Javadoc 风格的块注释"""
+        """提取文档注释 """
         # 方法声明的父节点通常是 class_body 或 interface_body
         parent = node.parent
         if not parent:
