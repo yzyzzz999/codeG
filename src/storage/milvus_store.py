@@ -4,6 +4,7 @@ CodeG - 向量存储、检索模块
 """
 from typing import List
 import logging
+import json
 
 from pymilvus import connections, FieldSchema, CollectionSchema, DataType, Collection
 from src.parser.method_extractor import MethodExtractor, MethodInfo
@@ -86,6 +87,8 @@ class MilvusStore:
             try:
                 method_vector = self.method_vectorizer.encode_method(method_info)
                 method_entity = method_info.to_entity()
+                # 转换parameters为JSON字符串
+                method_entity["parameters"] = json.dumps(method_entity["parameters"])
                 # 转换numpy数组为list格式（Milvus要求）
                 method_entity["code_embedding"] = method_vector.tolist()
                 method_entities.append(method_entity)
@@ -96,8 +99,18 @@ class MilvusStore:
                 
         if method_entities:
             try:
-                # 正确的插入格式：每个实体的值组成列表
-                insert_data = [list(entity.values()) for entity in method_entities]
+                # Milvus要求按列插入：每个字段一个列表
+                insert_data = [
+                    [e["code"] for e in method_entities],
+                    [e["name"] for e in method_entities],
+                    [e["parameters"] for e in method_entities],
+                    [e["return_type"] if e["return_type"] else "" for e in method_entities],
+                    [e["start_line"] for e in method_entities],
+                    [e["end_line"] for e in method_entities],
+                    [e["docstring"] if e["docstring"] else "" for e in method_entities],
+                    [e["annotation"] if e["annotation"] else "" for e in method_entities],
+                    [e["code_embedding"] for e in method_entities],
+                ]
                 self.collection.insert(insert_data)
                 logger.info(f"Successfully inserted {successful_inserts} methods")
                 return successful_inserts
@@ -145,9 +158,16 @@ class MilvusStore:
                 for hits in results:
                     for hit in hits:
                         try:
+                            # 反序列化parameters
+                            parameters = hit.entity.get("parameters", "[]")
+                            try:
+                                parameters = json.loads(parameters) if isinstance(parameters, str) else []
+                            except:
+                                parameters = []
+                            
                             method_info = MethodInfo(
                                 name=hit.entity.get("name", ""),
-                                parameters=hit.entity.get("parameters", []),
+                                parameters=parameters,
                                 return_type=hit.entity.get("return_type", ""),
                                 code=hit.entity.get("code", ""),
                                 start_line=hit.entity.get("start_line", 0),
