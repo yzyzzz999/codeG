@@ -51,10 +51,10 @@ class MethodExtractor:
         if not method_name:
             return None
 
+        method_code = self._extract_method_code(node, source_code)
         parameters = self._extract_parameters(node)
         return_type = self._extract_return_type(node)
-        method_code = source_code[node.start_byte:node.end_byte].strip()
-        docstring = self._extract_docstring(node, source_code)
+        docstring = self._extract_docstring(node)
         annotation = self._extract_annotation(node)
 
         return MethodInfo(
@@ -114,7 +114,7 @@ class MethodExtractor:
                         return prev_child.text.decode('utf-8')
         return None
 
-    def _extract_docstring(self, node: Node, source_code: str) -> Optional[str]:
+    def _extract_docstring(self, node: Node) -> Optional[str]:
         """提取文档注释"""
         parent = node.parent
         if parent:
@@ -126,7 +126,11 @@ class MethodExtractor:
                         if prev_sibling.type == 'block_comment':
                             comment_text = prev_sibling.text.decode('utf-8').strip()
                             if comment_text.startswith('/**'):
-                                return comment_text
+                                return comment_text.replace('/**', '').replace('*/', '').strip()
+                            elif comment_text.startswith('/*'):
+                                return comment_text.replace('/*', '').replace('*/', '').strip()
+                            elif comment_text.startswith('//'):
+                                return comment_text.replace('//', '').strip()
                         elif prev_sibling.type not in ['block_comment', 'line_comment']:
                             break
         return None
@@ -135,13 +139,18 @@ class MethodExtractor:
         """提取注解"""
         annotations = []
         for child in node.children:
-            if child.type == 'annotation':
+            if child.type == 'marker_annotation':
                 annotations.append(child.text.decode('utf-8'))
             elif child.type == 'modifiers':
                 for modifier_child in child.children:
-                    if modifier_child.type == 'annotation':
+                    if modifier_child.type == 'marker_annotation':
                         annotations.append(modifier_child.text.decode('utf-8'))
         return ", ".join(annotations) if annotations else None
+
+    def _extract_method_code(self, node: Node, source_code: str) -> str:
+        lines = source_code.split('\n')
+        method_code = '\n'.join(lines[node.start_point[0]:node.end_point[0]+1]).strip()
+        return method_code
 
 
 def main():
@@ -149,11 +158,18 @@ def main():
 
     test_code = '''
 public class Calculator {
+
+/**
+已弃置
+*/
     @Deprecated
     public int add(int a, int b) {
         return a + b;
     }
     
+    /**
+    乘法
+    */
     public double multiply(double x, double y) {
         return x * y;
     }
@@ -167,11 +183,11 @@ public class Calculator {
         print(f"名称: {method.name}")
         print(f"返回类型: {method.return_type}")
         print(f"注解: {method.annotation}")
-        print(f"文档注释: {'有' if method.docstring else '无'}")
+        print(f"文档注释: {method.docstring if method.docstring else '无'}")
         print("参数:")
         for param in method.parameters:
             print(f"  - {param['name']}: {param['type']}")
-        print("代码预览:", method.code.replace('\n', '\\n')[:100])
+        print("代码预览:", method.code.replace('\n', '\\n'))
 
 
 if __name__ == '__main__':
