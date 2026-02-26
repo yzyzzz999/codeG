@@ -6,63 +6,78 @@ Defects4J 数据处理器
 import json
 import subprocess
 from pathlib import Path
-from typing import List, Dict, Tuple
+from typing import List, Dict, Tuple, Optional
 import sys
 
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from src.parser.method_extractor import MethodExtractor
+
+def get_diff_files(buggy_dir: Path, fixed_dir: Path) -> List[str]:
+    """用 git diff 找出修改的文件"""
+    try:
+        result = subprocess.run(
+            ['git', 'diff', '--name-only', 'HEAD', str(fixed_dir)],
+            cwd=str(buggy_dir),
+            capture_output=True,
+            text=True
+        )
+        files = result.stdout.strip().split('\n') if result.stdout else []
+        return [f for f in files if f and f.endswith('.java')]
+    except Exception as e:
+        print(f"  git diff 失败: {e}")
+        return []
 
 
-def extract_java_files(project_dir: Path) -> List[Path]:
-    """提取目录中的所有 Java 文件"""
-    java_files = []
-    for src_dir in ["src/main/java", "src/java", "src"]:
-        src_path = project_dir / src_dir
-        if src_path.exists():
-            java_files.extend(src_path.rglob("*.java"))
-    return java_files
+def extract_changed_content(buggy_dir: Path, fixed_dir: Path) -> Optional[Tuple[str, str]]:
+    """提取被修改的文件内容"""
+    diff_files = get_diff_files(buggy_dir, fixed_dir)
+
+    if not diff_files:
+        # 如果没有 git diff 结果，尝试找 src 目录下的 Java 文件
+        for src_pattern in ['src/main/java/**/*.java', 'src/java/**/*.java', 'src/**/*.java']:
+            buggy_files = list(buggy_dir.glob(src_pattern))
+            if buggy_files:
+                # 找第一个在 fixed 中也存在的文件
+                for buggy_file in buggy_files[:10]:  # 限制数量
+                    rel_path = buggy_file.relative_to(buggy_dir)
+                    fixed_file = fixed_dir / rel_path
+                    if fixed_file.exists():
+                        buggy_code = buggy_file.read_text(encoding='utf-8', errors='ignore')
+                        fixed_code = fixed_file.read_text(encoding='utf-8', errors='ignore')
+                        if buggy_code != fixed_code:
+                            return buggy_code[:5000], fixed_code[:5000]  # 限制长度
+                break
+
+    # 用 git diff 的结果
+    for file_path in diff_files[:3]:  # 最多取3个文件
+        buggy_file = buggy_dir / file_path
+        fixed_file = fixed_dir / file_path
+
+        if buggy_file.exists() and fixed_file.exists():
+            try:
+                buggy_code = buggy_file.read_text(encoding='utf-8', errors='ignore')
+                fixed_code = fixed_file.read_text(encoding='utf-8', errors='ignore')
+
+                if buggy_code != fixed_code:
+                    # 限制长度，避免 token 过长
+                    return buggy_code[:5000], fixed_code[:5000]
+            except:
+                continue
+
+    return None
 
 
-def extract_methods_from_project(project_dir: Path) -> List[Dict]:
-    """从项目中提取所有方法"""
-    extractor = MethodExtractor()
-    java_files = extract_java_files(project_dir)
+def process_defects4j_pair(buggy_dir: Path, fixed_dir: Path) -> Optional[Dict]:
+    """处理一对 buggy/fixed 项目"""
+    print(f"  查找差异文件...")
+    result = extract_changed_content(buggy_dir, fixed_dir)
 
-    all_methods = []
-    for java_file in java_files:
-        try:
-            code = java_file.read_text(encoding='utf-8')
-            methods = extractor.extract_methods_from_code(code)
-            for method in methods:
-                method_info = method.to_entity()
-                method_info['file'] = str(java_file.relative_to(project_dir))
-                all_methods.append(method_info)
-        except Exception as e:
-            print(f"  读取文件失败 {java_file}: {e}")
-
-    return all_methods
-
-
-def process_defects4j_pair(buggy_dir: Path, fixed_dir: Path) -> Dict:
-    """
-    处理一对 buggy/fixed 项目
-
-    简化策略：取第一个文件的所有方法拼接
-    """
-    print(f"  提取 buggy 方法...")
-    buggy_methods = extract_methods_from_project(buggy_dir)
-
-    print(f"  提取 fixed 方法...")
-    fixed_methods = extract_methods_from_project(fixed_dir)
-
-    # 简化：取 buggy 和 fixed 的第一个方法作为样本
-    # 实际应该用 diff 找出修改的方法，这里简化处理
-    if buggy_methods and fixed_methods:
+    if result:
+        buggy_code, fixed_code = result
         return {
-            "buggy_code": buggy_methods[0]['code'],
+            "buggy_code": buggy_code,
             "has_bug": 1,
-            "fixed_code": fixed_methods[0]['code']
+            "fixed_code": fixed_code
         }
 
     return None
