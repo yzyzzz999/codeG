@@ -1,0 +1,1122 @@
+[
+  {
+    "id": "bug_84",
+    "code": "public double update_84(double x) {\n        // Bug: 除以零\n        return 1 / x;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "84",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_98",
+    "code": "public boolean transform_98(String email) {\n        return email != null && email.matches(\"^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$\");\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "98",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_29",
+    "code": "public double merge_29(double x) {\n        // Bug: 除以零\n        return 1 / x;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "29",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_3",
+    "code": "public boolean sort_3(String email) {\n        // Bug: 错误的正则\n        return email.contains(\"@\");\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "3",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_30",
+    "code": "public int validate_30(int a, int b) {\n        // Bug: 应该返回 a + b，但返回了 a - b\n        return a - b;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "30",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_53",
+    "code": "public boolean merge_53(String email) {\n        // Bug: 错误的正则\n        return email.contains(\"@\");\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "53",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_31",
+    "code": "public String merge_31(String s) {\n        // Bug: 没有判空\n        return s.toUpperCase();\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "31",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_97",
+    "code": "public void update_97(List<Integer> list) {\n        list.removeIf(i -> i < 0);\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "97",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_77",
+    "code": "public void extract_77(List<Integer> list) {\n        // Bug: 并发修改异常\n        for (int i = 0; i < list.size(); i++) {\n            if (list.get(i) < 0) {\n                list.remove(i);\n            }\n        }\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "77",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_81",
+    "code": "public String calculate_81(String s) {\n        if (s == null) return null;\n        return s.toUpperCase();\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "81",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_18",
+    "code": "public boolean transform_18(String email) {\n        // Bug: 错误的正则\n        return email.contains(\"@\");\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "18",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_28",
+    "code": "public boolean convert_28(String email) {\n        return email != null && email.matches(\"^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$\");\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "28",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_72",
+    "code": "public void transform_72(List<Integer> list) {\n        list.removeIf(i -> i < 0);\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "72",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_75",
+    "code": "public int parse_75(int a, int b) {\n        // Bug: 应该返回 a + b，但返回了 a - b\n        return a - b;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "75",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_86",
+    "code": "public String calculate_86(String s) {\n        if (s == null) return null;\n        return s.toUpperCase();\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "86",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_47",
+    "code": "public void calculate_47(List<Integer> list) {\n        list.removeIf(i -> i < 0);\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "47",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_97",
+    "code": "public void update_97(List<Integer> list) {\n        // Bug: 并发修改异常\n        for (int i = 0; i < list.size(); i++) {\n            if (list.get(i) < 0) {\n                list.remove(i);\n            }\n        }\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "97",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_43",
+    "code": "public boolean format_43(String email) {\n        return email != null && email.matches(\"^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$\");\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "43",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_16",
+    "code": "public String process_16(String s) {\n        // Bug: 没有判空\n        return s.toUpperCase();\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "16",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_48",
+    "code": "public boolean extract_48(String email) {\n        return email != null && email.matches(\"^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$\");\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "48",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_53",
+    "code": "public boolean merge_53(String email) {\n        return email != null && email.matches(\"^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$\");\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "53",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_5",
+    "code": "public int calculate_5(int a, int b) {\n        return a + b;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "5",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_73",
+    "code": "public boolean extract_73(String email) {\n        // Bug: 错误的正则\n        return email.contains(\"@\");\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "73",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_51",
+    "code": "public String convert_51(String s) {\n        // Bug: 没有判空\n        return s.toUpperCase();\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "51",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_94",
+    "code": "public double search_94(double x) {\n        if (x == 0) throw new IllegalArgumentException(\"x cannot be zero\");\n        return 1 / x;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "94",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_43",
+    "code": "public boolean format_43(String email) {\n        // Bug: 错误的正则\n        return email.contains(\"@\");\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "43",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_2",
+    "code": "public void compute_2(List<Integer> list) {\n        list.removeIf(i -> i < 0);\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "2",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_19",
+    "code": "public double convert_19(double x) {\n        if (x == 0) throw new IllegalArgumentException(\"x cannot be zero\");\n        return 1 / x;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "19",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_49",
+    "code": "public double calculate_49(double x) {\n        // Bug: 除以零\n        return 1 / x;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "49",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_46",
+    "code": "public String compute_46(String s) {\n        if (s == null) return null;\n        return s.toUpperCase();\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "46",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_39",
+    "code": "public double transform_39(double x) {\n        // Bug: 除以零\n        return 1 / x;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "39",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_41",
+    "code": "public String sort_41(String s) {\n        if (s == null) return null;\n        return s.toUpperCase();\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "41",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_65",
+    "code": "public int validate_65(int a, int b) {\n        return a + b;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "65",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_37",
+    "code": "public void transform_37(List<Integer> list) {\n        // Bug: 并发修改异常\n        for (int i = 0; i < list.size(); i++) {\n            if (list.get(i) < 0) {\n                list.remove(i);\n            }\n        }\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "37",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_19",
+    "code": "public double convert_19(double x) {\n        // Bug: 除以零\n        return 1 / x;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "19",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_83",
+    "code": "public boolean update_83(String email) {\n        // Bug: 错误的正则\n        return email.contains(\"@\");\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "83",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_79",
+    "code": "public double calculate_79(double x) {\n        // Bug: 除以零\n        return 1 / x;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "79",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_60",
+    "code": "public int validate_60(int a, int b) {\n        return a + b;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "60",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_21",
+    "code": "public String search_21(String s) {\n        if (s == null) return null;\n        return s.toUpperCase();\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "21",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_9",
+    "code": "public double calculate_9(double x) {\n        // Bug: 除以零\n        return 1 / x;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "9",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_70",
+    "code": "public int update_70(int a, int b) {\n        // Bug: 应该返回 a + b，但返回了 a - b\n        return a - b;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "70",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_62",
+    "code": "public void extract_62(List<Integer> list) {\n        list.removeIf(i -> i < 0);\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "62",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_21",
+    "code": "public String search_21(String s) {\n        // Bug: 没有判空\n        return s.toUpperCase();\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "21",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_34",
+    "code": "public double delete_34(double x) {\n        if (x == 0) throw new IllegalArgumentException(\"x cannot be zero\");\n        return 1 / x;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "34",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_22",
+    "code": "public void validate_22(List<Integer> list) {\n        list.removeIf(i -> i < 0);\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "22",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_82",
+    "code": "public void filter_82(List<Integer> list) {\n        // Bug: 并发修改异常\n        for (int i = 0; i < list.size(); i++) {\n            if (list.get(i) < 0) {\n                list.remove(i);\n            }\n        }\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "82",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_1",
+    "code": "public String extract_1(String s) {\n        if (s == null) return null;\n        return s.toUpperCase();\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "1",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_48",
+    "code": "public boolean extract_48(String email) {\n        // Bug: 错误的正则\n        return email.contains(\"@\");\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "48",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_63",
+    "code": "public boolean extract_63(String email) {\n        return email != null && email.matches(\"^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$\");\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "63",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_26",
+    "code": "public String calculate_26(String s) {\n        if (s == null) return null;\n        return s.toUpperCase();\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "26",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_66",
+    "code": "public String process_66(String s) {\n        if (s == null) return null;\n        return s.toUpperCase();\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "66",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_3",
+    "code": "public boolean sort_3(String email) {\n        return email != null && email.matches(\"^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$\");\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "3",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_27",
+    "code": "public void format_27(List<Integer> list) {\n        // Bug: 并发修改异常\n        for (int i = 0; i < list.size(); i++) {\n            if (list.get(i) < 0) {\n                list.remove(i);\n            }\n        }\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "27",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_4",
+    "code": "public double extract_4(double x) {\n        // Bug: 除以零\n        return 1 / x;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "4",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_80",
+    "code": "public int parse_80(int a, int b) {\n        // Bug: 应该返回 a + b，但返回了 a - b\n        return a - b;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "80",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_8",
+    "code": "public boolean search_8(String email) {\n        return email != null && email.matches(\"^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$\");\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "8",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_37",
+    "code": "public void transform_37(List<Integer> list) {\n        list.removeIf(i -> i < 0);\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "37",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_42",
+    "code": "public void calculate_42(List<Integer> list) {\n        // Bug: 并发修改异常\n        for (int i = 0; i < list.size(); i++) {\n            if (list.get(i) < 0) {\n                list.remove(i);\n            }\n        }\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "42",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_6",
+    "code": "public String extract_6(String s) {\n        if (s == null) return null;\n        return s.toUpperCase();\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "6",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_52",
+    "code": "public void extract_52(List<Integer> list) {\n        // Bug: 并发修改异常\n        for (int i = 0; i < list.size(); i++) {\n            if (list.get(i) < 0) {\n                list.remove(i);\n            }\n        }\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "52",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_23",
+    "code": "public boolean merge_23(String email) {\n        // Bug: 错误的正则\n        return email.contains(\"@\");\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "23",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_49",
+    "code": "public double calculate_49(double x) {\n        if (x == 0) throw new IllegalArgumentException(\"x cannot be zero\");\n        return 1 / x;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "49",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_24",
+    "code": "public double delete_24(double x) {\n        // Bug: 除以零\n        return 1 / x;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "24",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_32",
+    "code": "public void delete_32(List<Integer> list) {\n        list.removeIf(i -> i < 0);\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "32",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_83",
+    "code": "public boolean update_83(String email) {\n        return email != null && email.matches(\"^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$\");\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "83",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_58",
+    "code": "public boolean validate_58(String email) {\n        return email != null && email.matches(\"^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$\");\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "58",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_42",
+    "code": "public void calculate_42(List<Integer> list) {\n        list.removeIf(i -> i < 0);\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "42",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_85",
+    "code": "public int search_85(int a, int b) {\n        return a + b;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "85",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_99",
+    "code": "public double merge_99(double x) {\n        if (x == 0) throw new IllegalArgumentException(\"x cannot be zero\");\n        return 1 / x;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "99",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_54",
+    "code": "public double parse_54(double x) {\n        if (x == 0) throw new IllegalArgumentException(\"x cannot be zero\");\n        return 1 / x;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "54",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_50",
+    "code": "public int transform_50(int a, int b) {\n        return a + b;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "50",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_18",
+    "code": "public boolean transform_18(String email) {\n        return email != null && email.matches(\"^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$\");\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "18",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_90",
+    "code": "public int format_90(int a, int b) {\n        // Bug: 应该返回 a + b，但返回了 a - b\n        return a - b;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "90",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_29",
+    "code": "public double merge_29(double x) {\n        if (x == 0) throw new IllegalArgumentException(\"x cannot be zero\");\n        return 1 / x;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "29",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_67",
+    "code": "public void sort_67(List<Integer> list) {\n        list.removeIf(i -> i < 0);\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "67",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_99",
+    "code": "public double merge_99(double x) {\n        // Bug: 除以零\n        return 1 / x;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "99",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_58",
+    "code": "public boolean validate_58(String email) {\n        // Bug: 错误的正则\n        return email.contains(\"@\");\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "58",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_45",
+    "code": "public int parse_45(int a, int b) {\n        return a + b;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "45",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_16",
+    "code": "public String process_16(String s) {\n        if (s == null) return null;\n        return s.toUpperCase();\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "16",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_51",
+    "code": "public String convert_51(String s) {\n        if (s == null) return null;\n        return s.toUpperCase();\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "51",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_55",
+    "code": "public int convert_55(int a, int b) {\n        return a + b;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "55",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_63",
+    "code": "public boolean extract_63(String email) {\n        // Bug: 错误的正则\n        return email.contains(\"@\");\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "63",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_44",
+    "code": "public double delete_44(double x) {\n        // Bug: 除以零\n        return 1 / x;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "44",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_82",
+    "code": "public void filter_82(List<Integer> list) {\n        list.removeIf(i -> i < 0);\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "82",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_81",
+    "code": "public String calculate_81(String s) {\n        // Bug: 没有判空\n        return s.toUpperCase();\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "81",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_8",
+    "code": "public boolean search_8(String email) {\n        // Bug: 错误的正则\n        return email.contains(\"@\");\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "8",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_1",
+    "code": "public String extract_1(String s) {\n        // Bug: 没有判空\n        return s.toUpperCase();\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "1",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_57",
+    "code": "public void sort_57(List<Integer> list) {\n        // Bug: 并发修改异常\n        for (int i = 0; i < list.size(); i++) {\n            if (list.get(i) < 0) {\n                list.remove(i);\n            }\n        }\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "57",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_12",
+    "code": "public void format_12(List<Integer> list) {\n        // Bug: 并发修改异常\n        for (int i = 0; i < list.size(); i++) {\n            if (list.get(i) < 0) {\n                list.remove(i);\n            }\n        }\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "12",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_40",
+    "code": "public int validate_40(int a, int b) {\n        return a + b;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "40",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_95",
+    "code": "public int filter_95(int a, int b) {\n        return a + b;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "95",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_40",
+    "code": "public int validate_40(int a, int b) {\n        // Bug: 应该返回 a + b，但返回了 a - b\n        return a - b;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "40",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_60",
+    "code": "public int validate_60(int a, int b) {\n        // Bug: 应该返回 a + b，但返回了 a - b\n        return a - b;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "60",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_68",
+    "code": "public boolean merge_68(String email) {\n        // Bug: 错误的正则\n        return email.contains(\"@\");\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "68",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_38",
+    "code": "public boolean extract_38(String email) {\n        return email != null && email.matches(\"^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$\");\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "38",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_28",
+    "code": "public boolean convert_28(String email) {\n        // Bug: 错误的正则\n        return email.contains(\"@\");\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "28",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_77",
+    "code": "public void extract_77(List<Integer> list) {\n        list.removeIf(i -> i < 0);\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "77",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_70",
+    "code": "public int update_70(int a, int b) {\n        return a + b;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "70",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_27",
+    "code": "public void format_27(List<Integer> list) {\n        list.removeIf(i -> i < 0);\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "27",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_26",
+    "code": "public String calculate_26(String s) {\n        // Bug: 没有判空\n        return s.toUpperCase();\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "26",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_34",
+    "code": "public double delete_34(double x) {\n        // Bug: 除以零\n        return 1 / x;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "34",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_17",
+    "code": "public void parse_17(List<Integer> list) {\n        // Bug: 并发修改异常\n        for (int i = 0; i < list.size(); i++) {\n            if (list.get(i) < 0) {\n                list.remove(i);\n            }\n        }\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "17",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_96",
+    "code": "public String validate_96(String s) {\n        if (s == null) return null;\n        return s.toUpperCase();\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "96",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_0",
+    "code": "public int update_0(int a, int b) {\n        return a + b;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "0",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_73",
+    "code": "public boolean extract_73(String email) {\n        return email != null && email.matches(\"^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$\");\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "73",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_65",
+    "code": "public int validate_65(int a, int b) {\n        // Bug: 应该返回 a + b，但返回了 a - b\n        return a - b;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "65",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_89",
+    "code": "public double sort_89(double x) {\n        // Bug: 除以零\n        return 1 / x;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "89",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_20",
+    "code": "public int calculate_20(int a, int b) {\n        return a + b;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "20",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_57",
+    "code": "public void sort_57(List<Integer> list) {\n        list.removeIf(i -> i < 0);\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "57",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_4",
+    "code": "public double extract_4(double x) {\n        if (x == 0) throw new IllegalArgumentException(\"x cannot be zero\");\n        return 1 / x;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "4",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_44",
+    "code": "public double delete_44(double x) {\n        if (x == 0) throw new IllegalArgumentException(\"x cannot be zero\");\n        return 1 / x;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "44",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_7",
+    "code": "public void validate_7(List<Integer> list) {\n        list.removeIf(i -> i < 0);\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "7",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_14",
+    "code": "public double compute_14(double x) {\n        // Bug: 除以零\n        return 1 / x;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "14",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_71",
+    "code": "public String process_71(String s) {\n        if (s == null) return null;\n        return s.toUpperCase();\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "71",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_76",
+    "code": "public String convert_76(String s) {\n        if (s == null) return null;\n        return s.toUpperCase();\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "76",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_33",
+    "code": "public boolean search_33(String email) {\n        // Bug: 错误的正则\n        return email.contains(\"@\");\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "33",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_64",
+    "code": "public double extract_64(double x) {\n        if (x == 0) throw new IllegalArgumentException(\"x cannot be zero\");\n        return 1 / x;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "64",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_90",
+    "code": "public int format_90(int a, int b) {\n        return a + b;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "90",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_64",
+    "code": "public double extract_64(double x) {\n        // Bug: 除以零\n        return 1 / x;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "64",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_5",
+    "code": "public int calculate_5(int a, int b) {\n        // Bug: 应该返回 a + b，但返回了 a - b\n        return a - b;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "5",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_78",
+    "code": "public boolean search_78(String email) {\n        return email != null && email.matches(\"^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$\");\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "78",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_52",
+    "code": "public void extract_52(List<Integer> list) {\n        list.removeIf(i -> i < 0);\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "52",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_93",
+    "code": "public boolean merge_93(String email) {\n        // Bug: 错误的正则\n        return email.contains(\"@\");\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "93",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_59",
+    "code": "public double transform_59(double x) {\n        if (x == 0) throw new IllegalArgumentException(\"x cannot be zero\");\n        return 1 / x;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "59",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_31",
+    "code": "public String merge_31(String s) {\n        if (s == null) return null;\n        return s.toUpperCase();\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "31",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_46",
+    "code": "public String compute_46(String s) {\n        // Bug: 没有判空\n        return s.toUpperCase();\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "46",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_75",
+    "code": "public int parse_75(int a, int b) {\n        return a + b;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "75",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_68",
+    "code": "public boolean merge_68(String email) {\n        return email != null && email.matches(\"^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$\");\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "68",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_13",
+    "code": "public boolean extract_13(String email) {\n        // Bug: 错误的正则\n        return email.contains(\"@\");\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "13",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_88",
+    "code": "public boolean sort_88(String email) {\n        return email != null && email.matches(\"^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$\");\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "88",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_93",
+    "code": "public boolean merge_93(String email) {\n        return email != null && email.matches(\"^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$\");\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "93",
+    "version": "fixed"
+  },
+  {
+    "id": "fix_87",
+    "code": "public void compute_87(List<Integer> list) {\n        list.removeIf(i -> i < 0);\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "87",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_35",
+    "code": "public int update_35(int a, int b) {\n        // Bug: 应该返回 a + b，但返回了 a - b\n        return a - b;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "35",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_41",
+    "code": "public String sort_41(String s) {\n        // Bug: 没有判空\n        return s.toUpperCase();\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "41",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_95",
+    "code": "public int filter_95(int a, int b) {\n        // Bug: 应该返回 a + b，但返回了 a - b\n        return a - b;\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "95",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_13",
+    "code": "public boolean extract_13(String email) {\n        return email != null && email.matches(\"^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$\");\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "13",
+    "version": "fixed"
+  },
+  {
+    "id": "bug_36",
+    "code": "public String merge_36(String s) {\n        // Bug: 没有判空\n        return s.toUpperCase();\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "36",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_6",
+    "code": "public String extract_6(String s) {\n        // Bug: 没有判空\n        return s.toUpperCase();\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "6",
+    "version": "buggy"
+  },
+  {
+    "id": "bug_72",
+    "code": "public void transform_72(List<Integer> list) {\n        // Bug: 并发修改异常\n        for (int i = 0; i < list.size(); i++) {\n            if (list.get(i) < 0) {\n                list.remove(i);\n            }\n        }\n    }",
+    "label": 1,
+    "project": "MockProject",
+    "bug_id": "72",
+    "version": "buggy"
+  },
+  {
+    "id": "fix_89",
+    "code": "public double sort_89(double x) {\n        if (x == 0) throw new IllegalArgumentException(\"x cannot be zero\");\n        return 1 / x;\n    }",
+    "label": 0,
+    "project": "MockProject",
+    "bug_id": "89",
+    "version": "fixed"
+  }
+]
