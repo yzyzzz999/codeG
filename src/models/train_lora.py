@@ -91,8 +91,13 @@ def main():
     
     # 加载模型
     print("加载模型...")
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=2)
+    # 改成从本地缓存加载
+    tokenizer = AutoTokenizer.from_pretrained(model_name, local_files_only=True)
+    model = AutoModelForSequenceClassification.from_pretrained(
+        model_name,
+        num_labels=2,
+        local_files_only=True
+    )
     
     # LoRA 配置
     lora_config = LoraConfig(
