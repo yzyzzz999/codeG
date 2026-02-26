@@ -105,9 +105,11 @@ def main():
     print(f"召回率 (Recall): {results['recall']:.4f}")
     print(f"F1 分数: {results['f1']:.4f}")
     print("\n混淆矩阵:")
-    print(f"TN={results['confusion_matrix'][0][0]}, FP={results['confusion_matrix'][0][1]}")
-    print(f"FN={results['confusion_matrix'][1][0]}, TP={results['confusion_matrix'][1][1]}")
-    print("=" * 50)
+    if len(results['confusion_matrix']) >= 2:
+        print(f"TN={results['confusion_matrix'][0][0]}, FP={results['confusion_matrix'][0][1]}")
+        print(f"FN={results['confusion_matrix'][1][0]}, TP={results['confusion_matrix'][1][1]}")
+    else:
+        print(f"混淆矩阵: {results['confusion_matrix']}")
 
     # 保存结果
     output_file = Path(model_path) / "evaluation_results.json"

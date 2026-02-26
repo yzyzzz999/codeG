@@ -17,10 +17,10 @@ class BugDetector:
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
         # 加载 tokenizer 和模型
-        self.tokenizer = AutoTokenizer.from_pretrained(model_path)
+        self.tokenizer = AutoTokenizer.from_pretrained(model_path, local_files_only=True)
 
         base_model = AutoModelForSequenceClassification.from_pretrained(
-            base_model_name,
+            base_model_name, local_files_only=True,
             num_labels=2
         )
         self.model = PeftModel.from_pretrained(base_model, model_path)
