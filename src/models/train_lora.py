@@ -24,7 +24,7 @@ class BugDataset(Dataset):
     def __getitem__(self, idx):
         item = self.data[idx]
         encoding = self.tokenizer(
-            item['buggy_code'],
+            item['code'],
             truncation=True,
             padding='max_length',
             max_length=self.max_length,
@@ -33,7 +33,7 @@ class BugDataset(Dataset):
         return {
             'input_ids': encoding['input_ids'].squeeze(0),
             'attention_mask': encoding['attention_mask'].squeeze(0),
-            'labels': torch.tensor(item['has_bug'], dtype=torch.long)
+            'labels': torch.tensor(item['label'], dtype=torch.long)
         }
 
 
@@ -113,8 +113,9 @@ def main():
     
     # 加载数据
     print("加载数据...")
-    train_dataset = BugDataset(data_dir / "train.json", tokenizer)
-    val_dataset = BugDataset(data_dir / "val.json", tokenizer)
+    data_split_dir = Path("/codeG/data/defects4j/split")
+    train_dataset = BugDataset(data_split_dir / "train.json", tokenizer)
+    val_dataset = BugDataset(data_split_dir / "val.json", tokenizer)
     
     train_loader = DataLoader(train_dataset, batch_size=2, shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=2)
