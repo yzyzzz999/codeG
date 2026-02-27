@@ -45,7 +45,7 @@ def evaluate(model, tokenizer, data_file, device, max_length=512):
         for item in tqdm(data):
             # Tokenize
             encoding = tokenizer(
-                item['buggy_code'],
+                item['code'],
                 truncation=True,
                 padding='max_length',
                 max_length=max_length,
@@ -61,7 +61,7 @@ def evaluate(model, tokenizer, data_file, device, max_length=512):
             pred = torch.argmax(logits, dim=-1).item()
 
             predictions.append(pred)
-            labels.append(item['has_bug'])
+            labels.append(item['label'])
 
     # 计算指标
     accuracy = accuracy_score(labels, predictions)
@@ -84,7 +84,7 @@ def evaluate(model, tokenizer, data_file, device, max_length=512):
 def main():
     # 配置
     model_path = "/codeG/models/lora-bug-detection"
-    data_file = "/codeG/data/defects4j/processed/test.json"
+    data_file = "/codeG/data/defects4j/split/test.json"
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(f"使用设备: {device}")
